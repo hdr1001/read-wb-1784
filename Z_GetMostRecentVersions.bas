@@ -109,23 +109,24 @@ Public Sub ReadCodeAndRefTables()
     Const FILE_NAME = 0
     Const WS_NAME = 1
     Const NUM_COL = 2
+    Const RANGE_NAME = 3
     Dim collRefTables As New Collection
     Dim arr As Variant, sFileName As String, sWsName As String
     
     'Create a collection of reference tables to imported
-    collRefTables.Add Array("Subsidiary code.csv", "Subsidiary code (935 - 935)", 2), "SubsCode"
-    collRefTables.Add Array("Status code.csv", "Status code (934 - 934)", 2), "StatusCode"
-    collRefTables.Add Array("Legal status.csv", "Legal status (930 - 932)", 2), "LegalStatusCode"
-    collRefTables.Add Array("Imp-Exp code.csv", "Imp.-Exp. code (929 - 929)", 2), "ImpExpCode"
-    collRefTables.Add Array("Currency code.csv", "Currency code (908 - 911)", 7), "CurrCode"
-    collRefTables.Add Array("Activity ind.csv", "Activity ind. (867 - 869)", 2), "ActCode"
-    collRefTables.Add Array("SIC87.csv", "SIC87 (835 - 838)", 6), "Sic87Code"
-    collRefTables.Add Array("National ID code.csv", "National ID code (617 - 621)", 2), "NatIDCode"
-    collRefTables.Add Array("Continent code.csv", "Continent code (429 - 429)", 2), "ContinentCode"
-    collRefTables.Add Array("Country code.csv", "Country code (417 - 419)", 3), "CountryCode"
-    collRefTables.Add Array("State-Province abbr.csv", "State-Province abbr. (413 -416)", 3), "StateProvCode"
+    collRefTables.Add Array("Subsidiary code.csv", "Subsidiary code (935 - 935)", 2, "Subsidiary_Codes"), "SubsCode"
+    collRefTables.Add Array("Status code.csv", "Status code (934 - 934)", 2, "Status_Codes"), "StatusCode"
+    collRefTables.Add Array("Legal status.csv", "Legal status (930 - 932)", 2, "LegalStatus_Codes"), "LegalStatusCode"
+    collRefTables.Add Array("Imp-Exp code.csv", "Imp.-Exp. code (929 - 929)", 2, "ImportExport_Codes"), "ImpExpCode"
+    collRefTables.Add Array("Currency code.csv", "Currency code (908 - 911)", 7, "Curr_Codes"), "CurrCode"
+    collRefTables.Add Array("Activity ind.csv", "Activity ind. (867 - 869)", 2, "LocalAct_Codes"), "ActCode"
+    collRefTables.Add Array("SIC87.csv", "SIC87 (835 - 838)", 6, "SIC87_Codes"), "Sic87Code"
+    collRefTables.Add Array("National ID code.csv", "National ID code (617 - 621)", 2, "NatID_Codes"), "NatIDCode"
+    collRefTables.Add Array("Continent code.csv", "Continent code (429 - 429)", 2, "Cont_Codes"), "ContinentCode"
+    collRefTables.Add Array("Country code.csv", "Country code (417 - 419)", 3, "Ctry_Codes"), "CountryCode"
+    collRefTables.Add Array("State-Province abbr.csv", "State-Province abbr. (413 -416)", 3, "StateProv_Codes"), "StateProvCode"
 
-    For Each arr In collRefTables
+    For Each arr In collRefTables 'Import the reference tables
         'Save a local copy of the reference table as a ".txt" file
         sFileName = Left(arr(FILE_NAME), Len(arr(FILE_NAME)) - 3) & "txt"
         sWsName = arr(WS_NAME)
@@ -152,6 +153,14 @@ Public Sub ReadCodeAndRefTables()
             Debug.Print "Imported reference table " & sWsName
         End With
     Next
+    
+    For Each arr In collRefTables 'Add names and hide the worksheet
+        'Add a name to refer to the reference table
+        ThisWorkbook.Names.Add Name:=arr(RANGE_NAME), RefersTo:="='" & arr(WS_NAME) & "'!" & ThisWorkbook.Worksheets(arr(WS_NAME)).Cells(1, 1).CurrentRegion.Address
+
+        'Hide the reference table in the workbook
+        ThisWorkbook.Worksheets(arr(WS_NAME)).Visible = False
+    Next
 
 ErrHandler:
     Application.DisplayAlerts = True 'Enable application alerts
@@ -160,3 +169,46 @@ ErrHandler:
     'Give the user feedback about what went wrong
     If Err.Number <> 0 Then MsgBox "Error (" & Err.Number & ") occured. " & Err.Description
 End Sub
+
+'Remove the downloaded modules, reference tables & names before save
+Private Sub Z_CleanUpWb()
+    On Error Resume Next
+    
+    Application.DisplayAlerts = False
+    
+    Dim v As Variant
+    For Each v In ThisWorkbook.Names
+        ThisWorkbook.Names(v).Delete
+    Next
+    
+    Dim collBasFiles As New Collection
+    
+    collBasFiles.Add "A_Globals", "Globals"
+    collBasFiles.Add "B_EventHandlers", "EventHandlers"
+    collBasFiles.Add "C_PublicFunctions", "PublicFunctions"
+    
+    For Each v In collBasFiles
+        ThisWorkbook.VBProject.VBComponents.Remove ThisWorkbook.VBProject.VBComponents(v)
+    Next
+    
+    Dim collRefTables As New Collection
+    
+    collRefTables.Add "Subsidiary code (935 - 935)", "SubsCode"
+    collRefTables.Add "Status code (934 - 934)", "StatusCode"
+    collRefTables.Add "Legal status (930 - 932)", "LegalStatusCode"
+    collRefTables.Add "Imp.-Exp. code (929 - 929)", "ImpExpCode"
+    collRefTables.Add "Currency code (908 - 911)", "CurrCode"
+    collRefTables.Add "Activity ind. (867 - 869)", "ActCode"
+    collRefTables.Add "SIC87 (835 - 838)", "Sic87Code"
+    collRefTables.Add "National ID code (617 - 621)", "NatIDCode"
+    collRefTables.Add "Continent code (429 - 429)", "ContinentCode"
+    collRefTables.Add "Country code (417 - 419)", "CountryCode"
+    collRefTables.Add "State-Province abbr. (413 -416)", "StateProvCode"
+    
+    For Each v In collRefTables
+        ThisWorkbook.Worksheets(v).Delete
+    Next
+
+    Application.DisplayAlerts = True
+End Sub
+
