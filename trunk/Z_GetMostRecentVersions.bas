@@ -111,9 +111,9 @@ Public Sub ReadCodeAndRefTables()
     Const NUM_COL = 2
     Const RANGE_NAME = 3
     Dim collRefTables As New Collection
-    Dim arr As Variant, sFileName As String, sWsName As String
+    Dim arr As Variant, sFileName As String, sWsName As String, FldInfoLayout1784 As Variant
     
-    'Create a collection of reference tables to imported
+    'Create a collection of reference tables to imported. Also import layout specification of 1784
     collRefTables.Add Array("Subsidiary code.csv", "Subsidiary code (935 - 935)", 2, "Subsidiary_Codes"), "SubsCode"
     collRefTables.Add Array("Status code.csv", "Status code (934 - 934)", 2, "Status_Codes"), "StatusCode"
     collRefTables.Add Array("Legal status.csv", "Legal status (930 - 932)", 2, "LegalStatus_Codes"), "LegalStatusCode"
@@ -125,6 +125,7 @@ Public Sub ReadCodeAndRefTables()
     collRefTables.Add Array("Continent code.csv", "Continent code (429 - 429)", 2, "Cont_Codes"), "ContinentCode"
     collRefTables.Add Array("Country code.csv", "Country code (417 - 419)", 3, "Ctry_Codes"), "CountryCode"
     collRefTables.Add Array("State-Province abbr.csv", "State-Province abbr. (413 -416)", 3, "StateProv_Codes"), "StateProvCode"
+    collRefTables.Add Array("Layout1784.csv", "Layout1784", 6, ""), "Layout1784"
 
     For Each arr In collRefTables 'Import the reference tables
         'Save a local copy of the reference table as a ".txt" file
@@ -136,8 +137,14 @@ Public Sub ReadCodeAndRefTables()
         WriteContent2TextFile ThisWorkbook.Path & "\" & sFileName, sFileContents
 
         'Import the csv into an Excel workbook as a new worksheet
-        Workbooks.OpenText Filename:=ThisWorkbook.Path & "\" & sFileName, Origin:=1252, StartRow:=1, _
-            DataType:=xlDelimited, TextQualifier:=xlTextQualifierDoubleQuote, Comma:=True, FieldInfo:=vFldInfo(CLng(arr(NUM_COL)))
+        If Not (sWsName = "Layout1784") Then
+            Workbooks.OpenText Filename:=ThisWorkbook.Path & "\" & sFileName, Origin:=1252, StartRow:=1, _
+                DataType:=xlDelimited, TextQualifier:=xlTextQualifierDoubleQuote, Comma:=True, FieldInfo:=vFldInfo(CLng(arr(NUM_COL)))
+        Else
+            FldInfoLayout1784 = Array(Array(1, 2), Array(2, 1), Array(3, 2), Array(4, 2), Array(5, 1), Array(6, 1))
+            Workbooks.OpenText Filename:=ThisWorkbook.Path & "\" & sFileName, Origin:=1252, StartRow:=1, _
+                DataType:=xlDelimited, TextQualifier:=xlTextQualifierDoubleQuote, Comma:=True, FieldInfo:=FldInfoLayout1784
+        End If
 
         'Remove, if necessary, the possibly outdated reference table from the workbook
         With ActiveSheet 'Just imported reference table
@@ -150,16 +157,18 @@ Public Sub ReadCodeAndRefTables()
             End If
             
             .Move before:=ThisWorkbook.Sheets(1)
-            Debug.Print "Imported reference table " & sWsName
+            Debug.Print "Imported table " & sWsName
         End With
     Next
     
     For Each arr In collRefTables 'Add names and hide the worksheet
-        'Add a name to refer to the reference table
-        ThisWorkbook.Names.Add Name:=arr(RANGE_NAME), RefersTo:="='" & arr(WS_NAME) & "'!" & ThisWorkbook.Worksheets(arr(WS_NAME)).Cells(1, 1).CurrentRegion.Address
-
-        'Hide the reference table in the workbook
-        ThisWorkbook.Worksheets(arr(WS_NAME)).Visible = False
+        If Not (arr(WS_NAME) = "Layout1784") Then
+            'Add a name to refer to the reference table
+            ThisWorkbook.Names.Add Name:=arr(RANGE_NAME), RefersTo:="='" & arr(WS_NAME) & "'!" & ThisWorkbook.Worksheets(arr(WS_NAME)).Cells(1, 1).CurrentRegion.Address
+    
+            'Hide the reference table in the workbook
+            ThisWorkbook.Worksheets(arr(WS_NAME)).Visible = False
+        End If
     Next
 
 ErrHandler:
@@ -204,6 +213,7 @@ Private Sub Z_CleanUpWb()
     collRefTables.Add "Continent code (429 - 429)", "ContinentCode"
     collRefTables.Add "Country code (417 - 419)", "CountryCode"
     collRefTables.Add "State-Province abbr. (413 -416)", "StateProvCode"
+    collRefTables.Add "Layout1784", "Layout1784"
     
     For Each v In collRefTables
         ThisWorkbook.Worksheets(v).Delete
