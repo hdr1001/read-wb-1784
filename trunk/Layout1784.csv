@@ -1,0 +1,111 @@
+"ID","POS","NAME","DESC","START_POS","WIDTH"
+"1784",1,"Filler1","Filler",1, 2 
+"1784",2,"Duns","DUNS Number",3, 9 
+"1784",3,"Bus_Nme","Business Name",12, 90 
+"1784",4,"Trdg_style_1","Secondary Name",102, 90 
+"1784",5,"Reg_Adr_ind","Registered Address Indicator",192, 1 
+"1784",6,"Adr1","Street Address",193, 64 
+"1784",7,"Adr2","Street Address 2",257, 64 
+"1784",8,"City_Nme","City Name",321, 30 
+"1784",9,"State_Prov","State/Province Name",351, 30 
+"1784",10,"Ctry_Nme","Country Name",381, 20 
+"1784",11,"City_Cd","City Code",401, 6 
+"1784",12,"Cnty_Cd","County Code",407, 3 
+"1784",13,"State_Prov_Cd","State/Province Code",410, 3 
+"1784",14,"State_Prov_Abbr","State/Province Abbreviation",413, 4 
+"1784",15,"Ctry_Cd","Country Code",417, 3 
+"1784",16,"Post_Cd","Postal Code for Street Address",420, 9 
+"1784",17,"Cont_Cd","Continent Code",429, 1 
+"1784",18,"MAdr","Mailing Address",430, 32 
+"1784",19,"MCity_Nme","Mailing City Name",462, 30 
+"1784",20,"MCnty_Nme","Mailing County name",492, 30 
+"1784",21,"MState_Prov_Nme","Mailing State/Province Name",522, 30 
+"1784",22,"MCtry_Nme","Mailing Country Name",552, 20 
+"1784",23,"MCity_Cd","Mailing City Code",572, 6 
+"1784",24,"MCnty_Cd","Mailing County Code",578, 3 
+"1784",25,"MState_Prov_Cd","Mailing State/Province Code",581, 3 
+"1784",26,"MState_Prov_Abbr","Mailing State/Province Abbreviation",584, 4 
+"1784",27,"MCtry_Cd","Mailing Country Code",588, 3 
+"1784",28,"MPost_Cd","Postal Code For Mailing Address",591, 9 
+"1784",29,"MCont_Cd","Mailing Continent Code",600, 1 
+"1784",30,"NatID","National Identification Number",601, 16 
+"1784",31,"NatID_Cd","National Identification System Code",617, 5 
+"1784",32,"Ctry_Access_Cd","Country Telephone Access Code",622, 4 
+"1784",33,"Tel","Telephone Number",626, 16 
+"1784",34,"Cable_Telx","Cable Telex",642, 16 
+"1784",35,"Fax","Fax Number",658, 16 
+"1784",36,"CEO_Nme","Chief Executive Officer Name",674, 60 
+"1784",37,"CEO_Title","Chief Executive Officer Title",734, 60 
+"1784",38,"Line_Bus_descr","Line of Business",794, 41 
+"1784",39,"US1987_Sic1","U.S. 1987 SIC 1",835, 4 
+"1784",40,"US1987_Sic2","U.S. 1987 SIC 2",839, 4 
+"1784",41,"US1987_Sic3","U.S. 1987 SIC 3",843, 4 
+"1784",42,"US1987_Sic4","U.S. 1987 SIC 4",847, 4 
+"1784",43,"US1987_Sic5","U.S. 1987 SIC 5",851, 4 
+"1784",44,"US1987_Sic6","U.S. 1987 SIC 6",855, 4 
+"1784",45,"Prmy_Loc_Act_Cd","Primary Local Activity Code",859, 8 
+"1784",46,"Act_Ind","Local Activity Code Indicator",867, 3 
+"1784",47,"Yr_Strt","Year Started",870, 4 
+"1784",48,"Ann_Sales","Annual Sales Local",874, 18 
+"1784",49,"Ann_Sales_Ind","Annual Sales Indicator",892, 1 
+"1784",50,"Ann_Sales_US","Annual Sales in U.S. dollars",893, 15 
+"1784",51,"Crcy_Cd","Currency Code",908, 4 
+"1784",52,"Emp_Here","Employees Here",912, 7 
+"1784",53,"Emp_Here_Ind","Employees Here Indicator",919, 1 
+"1784",54,"Emp_Tot","Employees Total",920, 7 
+"1784",55,"Emp_Tot_Ind","Employees Total Indicator",927, 1 
+"1784",56,"Prin_Incl_Ind","Include Principles Indicator",928, 1 
+"1784",57,"Imp_Exp_Cd","Import/Export/Agent Indicator",929, 1 
+"1784",58,"Lgl_Stat","Legal Status",930, 3 
+"1784",59,"Control_Ind","Control Indicator",933, 1 
+"1784",60,"Stat_Cd","Status Code",934, 1 
+"1784",61,"Subs_Cd","Subsidiary Code",935, 1 
+"1784",62,"Filler2","Filler",936, 2 
+"1784",63,"Prev_Duns","Previous DUNS Number",938, 9 
+"1784",64,"Rep_Date","Report Date",947, 8 
+"1784",65,"HQ_Prnt_Fil","Filler",955, 2 
+"1784",66,"HQ_Prnt_Duns","Headquarter/Parent DUNS Number",957, 9 
+"1784",67,"HQ_Prnt_Nme","Headquarter/Parent Business Name",966, 90 
+"1784",68,"HQ_prnt_Adr","Headquarter/Parent Street Address",1056, 64 
+"1784",69,"HQ_prnt_City_Nme","Headquarter/Parents City",1120, 30 
+"1784",70,"HQ_prnt_State_Prov_Nme","Headquarter/Parent State/Province",1150, 30 
+"1784",71,"HQ_prnt_Ctry_Nme","Headquarter/Parent Country Name",1180, 20 
+"1784",72,"HQ_prnt_City_Cd","Headquarter/Parents City Code",1200, 6 
+"1784",73,"HQ_prnt_Cnty_Cd","Headquarter/Parent County Code",1206, 3 
+"1784",74,"HQ_prnt_State_Prov_Abbr","Headquarter/Parent State/Province Abbreviation",1209, 4 
+"1784",75,"HQ_prnt_Ctry_Cd","Headquarter/Parent Country Code",1213, 3 
+"1784",76,"HQ_prnt_Post_Cd","Headquarter/Parent Postal Code",1216, 9 
+"1784",77,"HQ_prnt_Cont_Cd","Headquarter/Parent Continent Code",1225, 1 
+"1784",78,"Dom_Ult_Fil","Filler",1226, 2 
+"1784",79,"Dom_Ult_Duns","Domestic Ultimate DUNS Numbers",1228, 9 
+"1784",80,"Dom_Ult_Nme","Domestic Ultimate Business Name",1237, 90 
+"1784",81,"Dom_Ult_Adr","Domestic Ultimate Street Address",1327, 64 
+"1784",82,"Dom_Ult_City_Nme","Domestic Ultimate City Name",1391, 30 
+"1784",83,"Dom_Ult_State_Prov_Nme","Domestic Ultimate State/Province Name",1421, 30 
+"1784",84,"Dom_Ult_City_Cd","Domestic Ultimate City Code",1451, 6 
+"1784",85,"Dom_Ult_Ctry_Cd","Domestic Ultimate Country Code",1457, 3 
+"1784",86,"Dom_Ult_State_Prov_Abbr","Domestic Ultimate State Abbreviation",1460, 4 
+"1784",87,"Dom_Ult_Post_Cd","Domestic Ultimate Postal Code",1464, 9 
+"1784",88,"Gbl_Ult_Ind","Global Ultimate Indicator",1473, 1 
+"1784",89,"Gbl_Ult_Fil","Filler",1474, 2 
+"1784",90,"Gbl_Ult_Duns","Global Ultimate DUNS Number",1476, 9 
+"1784",91,"Gbl_Ult_Nme","Global Ultimate Name",1485, 90 
+"1784",92,"Gbl_Ult_Adr","Global Ultimate Street Address",1575, 64 
+"1784",93,"Gbl_Ult_City_Nme","Global Ultimate City Name",1639, 30 
+"1784",94,"Gbl_Ult_State_Prov_Nme","Global Ultimate State/Province",1669, 30 
+"1784",95,"Gbl_Ult_Ctry_Nme","Global Ultimate Country Name",1699, 20 
+"1784",96,"Gbl_Ult_City_Cd","Global Ultimate City Code",1719, 6 
+"1784",97,"Gbl_Ult_Cnty_Cd","Global Ultimate County Code",1725, 3 
+"1784",98,"Gbl_Ult_State_Prov_Abbr","Ultimate State/Province Abbreviation",1728, 4 
+"1784",99,"Gbl_Ult_Ctry_Cd","Global Ultimate Country Code",1732, 3 
+"1784",100,"Gbl_Ult_Post_Cd","Global Ultimate Postal Code",1735, 9 
+"1784",101,"Gbl_Ult_Cont_Cd","Global Ultimate Continent Code",1744, 1 
+"1784",102,"Fam_Memb_Gbl","Number of Family Members",1745, 5 
+"1784",103,"Gbl_Dias_Cd","DIAS Code",1750, 9 
+"1784",104,"Gbl_Hier_Cd","Hierarchy Code",1759, 2 
+"1784",105,"Fam_Upd_Date","Family Update Date",1761, 8 
+"1784",106,"OOB_Ind","Out of Business Indicator",1769, 1 
+"1784",107,"Marketable_Ind","Marketable Indicator",1770, 1 
+"1784",108,"Record_ID","Record ID",1771, 10 
+"1784",109,"System_ID","System ID",1781, 4 
+
