@@ -36,7 +36,7 @@ Private Function sDownloadTextFile(url As String) As String
 
     oHTTP.Open Method:="GET", url:=url, async:=False
     oHTTP.setRequestHeader "User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)"
-    oHTTP.setRequestHeader "Content-Type", "multipart/form-data; "
+    oHTTP.setRequestHeader "Content-Type", "text/plain;charset=UTF-8"
     oHTTP.Option(WinHttpRequestOption_EnableRedirects) = True
     oHTTP.send
 
@@ -138,7 +138,7 @@ Public Sub ReadCodeAndRefTables()
 
         'Import the csv into an Excel workbook as a new worksheet
         If Not (sWsName = "Layout1784") Then
-            Workbooks.OpenText Filename:=ThisWorkbook.Path & "\" & sFileName, Origin:=1252, StartRow:=1, _
+            Workbooks.OpenText Filename:=ThisWorkbook.Path & "\" & sFileName, Origin:=65001, StartRow:=1, _
                 DataType:=xlDelimited, TextQualifier:=xlTextQualifierDoubleQuote, Comma:=True, FieldInfo:=vFldInfo(CLng(arr(NUM_COL)))
         Else
             FldInfoLayout1784 = Array(Array(1, 2), Array(2, 1), Array(3, 2), Array(4, 2), Array(5, 1), Array(6, 1))

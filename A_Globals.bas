@@ -49,7 +49,7 @@ Public Const errNoFileSpecified = 32768
 
 'Columns Lhv1784Raw
 Public Const Col_Raw_System_ID = 109
-Public Const Col_Raw_Sap_Cust_Num = 108
+Public Const Col_Raw_Record_ID = 108
 Public Const Col_Raw_Filler1 = 1
 Public Const Col_Raw_Duns = 2
 Public Const Col_Raw_Bus_Nme = 3
@@ -160,7 +160,7 @@ Public Const Col_Raw_Fam_Upd_Date = 105
 
 'Columns Lhv1784Xl
 Public Const Col_Xl_System_ID = 1
-Public Const Col_Xl_Sap_Cust_Num = 2
+Public Const Col_Xl_Record_ID = 2
 Public Const Col_Xl_Filler1 = 3
 Public Const Col_Xl_Duns = 4
 Public Const Col_Xl_Bus_Nme = 5
@@ -403,4 +403,5 @@ Private Sub CleanUpWb()
 
     Application.DisplayAlerts = True
 End Sub
+
 

@@ -74,7 +74,7 @@ Private Sub ProcessLhv1784Xl(wsLhv1784Raw As Worksheet, wsLhv1784Xl As Worksheet
         
         For lRow = 1 To lNumRows
             .Cells(lRow, Col_Xl_System_ID) = wsLhv1784Raw.Cells(lRow, Col_Raw_System_ID)
-            .Cells(lRow, Col_Xl_Sap_Cust_Num) = wsLhv1784Raw.Cells(lRow, Col_Raw_Sap_Cust_Num)
+            .Cells(lRow, Col_Xl_Record_ID) = wsLhv1784Raw.Cells(lRow, Col_Raw_Record_ID)
             .Cells(lRow, Col_Xl_Filler1) = wsLhv1784Raw.Cells(lRow, Col_Raw_Filler1)
             'DUNS already filled out
             .Cells(lRow, Col_Xl_Bus_Nme) = wsLhv1784Raw.Cells(lRow, Col_Raw_Bus_Nme)
@@ -346,7 +346,7 @@ Private Sub ProcessLhv1784Xl(wsLhv1784Raw As Worksheet, wsLhv1784Xl As Worksheet
         Next
 
         FormatHdr .Cells(1, Col_Xl_System_ID)
-        FormatHdr .Cells(1, Col_Xl_Sap_Cust_Num)
+        FormatHdr .Cells(1, Col_Xl_Record_ID)
         FormatHdr .Cells(1, Col_Xl_Filler1)
         FormatHdr .Cells(1, Col_Xl_Duns)
         FormatHdr .Cells(1, Col_Xl_Bus_Nme)
@@ -489,7 +489,7 @@ Private Sub ProcessLhv1784Xl(wsLhv1784Raw As Worksheet, wsLhv1784Xl As Worksheet
         FormatHdr .Cells(1, Col_Xl_Fam_Upd_Date)
         
         .Columns(Col_Xl_System_ID).ColumnWidth = Col_Width_6
-        .Columns(Col_Xl_Sap_Cust_Num).ColumnWidth = Col_Width_12
+        .Columns(Col_Xl_Record_ID).ColumnWidth = Col_Width_12
         .Columns(Col_Xl_Filler1).ColumnWidth = Col_Width_6
         .Columns(Col_Xl_Duns).ColumnWidth = Col_Width_DUNS
         .Columns(Col_Xl_Bus_Nme).ColumnWidth = Col_Width_Name1
@@ -758,7 +758,7 @@ Private Sub CreateDuplicateReports(wsLhv1784Raw As Worksheet)
     
         For lRow = 1 To lNumRows
             .Cells(lRow, Col_Dups_System_ID) = wsLhv1784Raw.Cells(lRow, Col_Raw_System_ID)
-            .Cells(lRow, Col_Dups_Sap_Cust_Num) = wsLhv1784Raw.Cells(lRow, Col_Raw_Sap_Cust_Num)
+            .Cells(lRow, Col_Dups_Sap_Cust_Num) = wsLhv1784Raw.Cells(lRow, Col_Raw_Record_ID)
             'DUNS already filled out
             .Cells(lRow, Col_Dups_Bus_Nme) = wsLhv1784Raw.Cells(lRow, Col_Raw_Bus_Nme)
             .Cells(lRow, Col_Dups_Ctry_Nme) = wsLhv1784Raw.Cells(lRow, Col_Raw_Ctry_Nme)
@@ -843,7 +843,7 @@ Private Sub CreateDuplicateReports(wsLhv1784Raw As Worksheet)
     
         For lRow = 1 To lNumRows
             .Cells(lRow, Col_GU_Dups_System_ID) = wsLhv1784Raw.Cells(lRow, Col_Raw_System_ID)
-            .Cells(lRow, Col_GU_Dups_Sap_Cust_Num) = wsLhv1784Raw.Cells(lRow, Col_Raw_Sap_Cust_Num)
+            .Cells(lRow, Col_GU_Dups_Sap_Cust_Num) = wsLhv1784Raw.Cells(lRow, Col_Raw_Record_ID)
             'DUNS already filled out
             .Cells(lRow, Col_GU_Dups_GU_Duns) = wsLhv1784Raw.Cells(lRow, Col_Raw_Gbl_Ult_Duns)
             .Cells(lRow, Col_GU_Dups_Bus_Nme) = wsLhv1784Raw.Cells(lRow, Col_Raw_Bus_Nme)
@@ -1136,4 +1136,5 @@ ErrHandler:
    
     Application.ScreenUpdating = True
 End Sub
+
 
